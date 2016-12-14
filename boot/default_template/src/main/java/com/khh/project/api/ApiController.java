@@ -1,7 +1,7 @@
 package com.khh.project.api;
 
 import com.khh.project.config.properties.ProjectProperties;
-import com.khh.project.web.board.repository.BoardRepository;
+import com.khh.project.service.board.BoardService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,7 +23,7 @@ public class ApiController {
 	@Autowired
 	private ProjectProperties projectProperty;
     @Autowired
-    BoardRepository boardRepository;
+	BoardService service;
 
 
 	@PreAuthorize("#oauth2.hasScope('read')")
