@@ -19,7 +19,6 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
 //http://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-security.html
 
-@EnableAuthorizationServer // OAuth2 권한 서버
 @Configuration
 @Order(1)
 public class AuthorizationServerConfigurerAdapter extends org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter {
@@ -33,6 +32,7 @@ public class AuthorizationServerConfigurerAdapter extends org.springframework.se
 	@Override
 	public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
 		oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
+//		oauthServer.checkTokenAccess("hasRole('ROLE_TRUSTED_CLIENT')");
 	}
 
 	@Override
@@ -54,6 +54,14 @@ public class AuthorizationServerConfigurerAdapter extends org.springframework.se
 	public void configure(final AuthorizationServerEndpointsConfigurer endpoints) {
 		endpoints.tokenStore(tokenStore()).allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST)
 				.accessTokenConverter(accessTokenConverter()).authenticationManager(authenticationManager);
+		// @formatter:off
+//		endpoints.authenticationManager(authenticationManager)
+//				.pathMapping("/oauth/confirm_access", confirmPath)
+//				.pathMapping("/oauth/token", tokenPath)
+//				.pathMapping("/oauth/check_token", checkTokenPath)
+//				.pathMapping("/oauth/token_key", tokenKeyPath)
+//				.pathMapping("/oauth/authorize", authorizePath);
+		// @formatter:on
 	}
 
 	@Bean
