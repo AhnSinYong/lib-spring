@@ -37,6 +37,7 @@ public class AuthorizationServerConfigurerAdapter extends org.springframework.se
 
 	@Override
 	public void configure(final ClientDetailsServiceConfigurer clients) throws Exception { // @formatter:off
+
 		clients.inMemory()
 				.withClient("client")
 				.secret("secret")

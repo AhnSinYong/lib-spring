@@ -1,31 +1,21 @@
-package com.khh.project.web.board;
+package com.khh.project.service.board;
 
-import com.khh.project.web.board.domain.Board;
-import com.khh.project.web.board.repository.BoardRepository;
+import com.khh.project.service.board.domain.Board;
+import com.khh.project.service.board.repository.BoardRepository;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.jpa.HibernateEntityManagerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.persistence.EntityManagerFactory;
 import java.util.List;
 
-@Controller
-@RequestMapping(BoardController.PATH_ROOT)
-//@Repository
-//@Transactional
-//@javax.transaction.Transactional
-public class BoardController {
-
-    public static final String PATH_ROOT    =   "/board";
+@Service
+public class BoardService {
 
     @Autowired
     BoardRepository repository;
@@ -46,7 +36,7 @@ public class BoardController {
 
     @RequestMapping("/list")
     @ResponseBody
-    List<Board> list() {
+    public List<Board> list() {
         Session currentSession = sessionFactory.getCurrentSession();
         currentSession.beginTransaction();
         Criteria crit = currentSession.createCriteria(Board.class);
@@ -62,7 +52,7 @@ public class BoardController {
 
     @RequestMapping("/add")
     @ResponseBody
-    Board add(@RequestParam(name = "name",required = true) String name) {
+    public Board add(@RequestParam(name = "name",required = true) String name) {
         Board board = new Board();
         board.setAddr("asd");
         board.setName(name);

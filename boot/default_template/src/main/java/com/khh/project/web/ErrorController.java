@@ -1,6 +1,8 @@
-package com.khh.project.web.error;
+package com.khh.project.web;
 
+import com.khh.project.service.error.ErrorService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,6 +20,8 @@ public class ErrorController implements org.springframework.boot.autoconfigure.w
 	public static final String PATH_ERROR_404 		= "/404";
 	public static final String PATH_ERROR_500 		= "/500";
 
+	@Autowired
+	ErrorService service;
 
 
 	@RequestMapping(value = PATH_ERROR_DEFAULT, method = GET)

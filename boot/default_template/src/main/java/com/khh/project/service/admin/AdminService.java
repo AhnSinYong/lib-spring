@@ -1,31 +1,25 @@
-package com.khh.project.web.admin;
+package com.khh.project.service.admin;
 
-import com.khh.project.web.admin.domain.Authority;
-import com.khh.project.web.admin.domain.User;
-import com.khh.project.web.admin.repository.UserRepository;
-import com.omnicns.java.db.hibernate.Hibernater;
+import com.khh.project.service.admin.domain.Authority;
+import com.khh.project.service.admin.domain.User;
+import com.khh.project.service.admin.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
-import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
-@RequestMapping(AdminController.PATH_ROOT)
+@Service
 @Transactional
 @javax.transaction.Transactional(rollbackOn = { Exception.class })
 @Slf4j
-public class AdminController {
+public class AdminService {
 
-    public static final String PATH_ROOT = "/admin";
 
     @Autowired
     public SessionFactory sessionFactory;
@@ -33,20 +27,14 @@ public class AdminController {
     @Autowired
     public UserRepository userRepository;
 
-   // @Autowired
-  //  Hibernater hibernater;
 
-    @RequestMapping({"","/"})
-    @ResponseBody
     String home() {
         return "admin main";
     }
 
 
 
-    @RequestMapping("/save")
-    @ResponseBody
-    String save() {
+    public String save() {
         Session currentSession = sessionFactory.getCurrentSession();
         currentSession.beginTransaction();
         User u = new User();
@@ -71,9 +59,7 @@ public class AdminController {
 
 
 
-    @RequestMapping("/list")
-    @ResponseBody
-    List<User> list() {
+    public List<User> list() {
         Session currentSession = sessionFactory.getCurrentSession();
 
 //        currentSession.beginTransaction();
@@ -92,21 +78,16 @@ public class AdminController {
         // currentSession.close();
         return list;
     }
-
-    @RequestMapping("/list2")
-    @ResponseBody
-//    @Transactional
-    List<User> list2() {
+    public List<User> list2() {
         List<User> list = userRepository.findAll();
 //        list.forEach(at->{
 //            log.debug(at.toString());
 //        });
         return list;
     }
-    @RequestMapping("/list3")
-    @ResponseBody
-//    @Transactional
-    User list3() {
+
+
+    public User list3() {
         User list = userRepository.findByUsername("khh");
 //        list.forEach(at->{
 //            log.debug(at.toString());

@@ -21,6 +21,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AnonymousConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 //import org.springframework.security.oauth2.provider.token.TokenStore;
 //import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
@@ -97,7 +98,7 @@ public class WebSecurityConfigurerAdapter extends org.springframework.security.c
         log.debug("-----security HttpSecurity-----"+http);
         http
             .anonymous()
-                .and()
+				.and()
 			//커스텀 시큐리티 인텁셉터 하려면 아래를 사용하면된다
 //			.addFilterBefore(filterSecurityInterceptor(), UsernamePasswordAuthenticationFilter.class)
             .authorizeRequests()

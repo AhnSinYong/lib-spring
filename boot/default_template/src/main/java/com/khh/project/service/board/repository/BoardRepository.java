@@ -1,6 +1,6 @@
-package com.khh.project.web.board.repository;
+package com.khh.project.service.board.repository;
 
-import com.khh.project.web.board.domain.Board;
+import com.khh.project.service.board.domain.Board;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BoardRepository extends JpaRepository<Board,String> {

@@ -1,4 +1,4 @@
-package com.khh.project.web.board.domain;
+package com.khh.project.service.board.domain;
 
 import lombok.Data;
 

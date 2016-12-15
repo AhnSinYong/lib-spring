@@ -1,7 +1,7 @@
 package com.khh.project.web;
 
 import com.khh.project.config.properties.ProjectProperties;
-import com.khh.project.web.board.repository.BoardRepository;
+import com.khh.project.service.board.repository.BoardRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ public class WebController {
 	@Autowired
 	private ProjectProperties projectProperty;
     @Autowired
-    BoardRepository boardRepository;
+	BoardRepository boardRepository;
 
 
 	@RequestMapping({"", PATH_ROOT})

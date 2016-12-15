@@ -1,6 +1,6 @@
-package com.khh.project.web.admin.repository;
+package com.khh.project.service.admin.repository;
 
-import com.khh.project.web.admin.domain.User;
+import com.khh.project.service.admin.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 //@Repository

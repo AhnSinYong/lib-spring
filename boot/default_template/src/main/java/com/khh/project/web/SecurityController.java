@@ -1,24 +1,29 @@
-package com.khh.project.web.auth;
+package com.khh.project.web;
 
 import com.khh.project.config.web.WebSecurityConfigurerAdapter;
-import com.khh.project.web.board.repository.BoardRepository;
-import lombok.extern.slf4j.Slf4j;
+import com.khh.project.service.security.SecurityService;
+import groovy.util.logging.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
-@RestController
-@RequestMapping(AuthController.PATH_ROOT)
-public class AuthController {
-    public static final String PATH_ROOT = WebSecurityConfigurerAdapter.AUTH_PATH;
-    @RequestMapping({"","/"})
+@Controller
+@RequestMapping(SecurityController.PATH_ROOT)
+public class SecurityController {
+
+    public static final String PATH_ROOT = WebSecurityConfigurerAdapter.SECURITY_PATH;
+
+    @Autowired
+    SecurityService service;
+    @RequestMapping({"",PATH_ROOT})
     String index(HttpServletRequest request, HttpServletResponse response, Model model) {
-        return "auth";
+        return "security/login";
     }
+
+
 }
