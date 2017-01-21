@@ -1,0 +1,20 @@
+#http://docs.spring.io/spring-boot/docs/current/reference/html/howto-properties-and-configuration.html
+#http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+
+spring:
+  h2:
+    console:
+      enabled: true # Enable the console.
+      path: /h2-console # Path at which the console will be available.
+server:
+  port: 8081
+logging:
+  level:
+    root: DEBUG
+    org.springframework.web: DEBUG
+    org.hibernate: DEBUG
+    com.khh: DEBUG
+
+
+
+

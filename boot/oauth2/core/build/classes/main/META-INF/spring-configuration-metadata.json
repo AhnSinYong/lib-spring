@@ -1,0 +1,67 @@
+{
+  "groups": [
+    {
+      "name": "hibernate",
+      "type": "com.khh.api.config.properties.HibernateProperties",
+      "sourceType": "com.khh.api.config.properties.HibernateProperties"
+    },
+    {
+      "name": "project",
+      "type": "com.khh.api.config.properties.ProjectProperties",
+      "sourceType": "com.khh.api.config.properties.ProjectProperties"
+    },
+    {
+      "name": "project.locale-change",
+      "type": "com.khh.api.config.properties.ProjectProperties$LocaleChange",
+      "sourceType": "com.khh.api.config.properties.ProjectProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "hibernate.annotated-packages",
+      "type": "java.lang.String[]",
+      "sourceType": "com.khh.api.config.properties.HibernateProperties"
+    },
+    {
+      "name": "hibernate.mapping-locations",
+      "type": "java.lang.String",
+      "sourceType": "com.khh.api.config.properties.HibernateProperties"
+    },
+    {
+      "name": "hibernate.packages-to-scan",
+      "type": "java.lang.String[]",
+      "sourceType": "com.khh.api.config.properties.HibernateProperties"
+    },
+    {
+      "name": "hibernate.properties",
+      "type": "java.util.Properties",
+      "sourceType": "com.khh.api.config.properties.HibernateProperties"
+    },
+    {
+      "name": "project.locale-change.http-methods",
+      "type": "java.lang.String[]",
+      "sourceType": "org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
+    },
+    {
+      "name": "project.locale-change.ignore-invalid-locale",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
+    },
+    {
+      "name": "project.locale-change.language-tag-compliant",
+      "type": "java.lang.Boolean",
+      "sourceType": "org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
+    },
+    {
+      "name": "project.locale-change.param-name",
+      "type": "java.lang.String",
+      "sourceType": "org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
+    },
+    {
+      "name": "project.properties",
+      "type": "java.util.Map<java.lang.String,java.lang.String>",
+      "sourceType": "com.khh.api.config.properties.ProjectProperties"
+    }
+  ],
+  "hints": []
+}
