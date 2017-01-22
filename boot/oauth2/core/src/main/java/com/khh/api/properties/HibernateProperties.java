@@ -1,4 +1,4 @@
-package com.khh.api.config.properties;
+package com.khh.api.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

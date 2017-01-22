@@ -1,20 +1,15 @@
-package com.khh.api.config;
+package com.khh.api.auth.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
@@ -28,13 +23,11 @@ import java.security.KeyPair;
 public class AuthorizationServerConfigurerAdapter extends org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter {
 
 
-
-
 	@Autowired
 	DataSource dataSource;
 
 	@Autowired//http://stackoverflow.com/questions/28254519/spring-oauth2-authorization-server
-	private AuthenticationManager authenticationManager;	// authorizedGrantTypes Password방식으로 쓰기위해서.
+	private AuthenticationManager authenticationManager;    // authorizedGrantTypes Password방식으로 쓰기위해서.
 
 	@Override
 	public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
@@ -62,7 +55,7 @@ public class AuthorizationServerConfigurerAdapter extends org.springframework.se
 //				.authorizedGrantTypes("password")
 //				.authorities("ROLE_AUTH")
 				.scopes("foo", "read", "write")
-				.accessTokenValiditySeconds(60*60) // 1 hour (초 단위)
+				.accessTokenValiditySeconds(60 * 60) // 1 hour (초 단위)
 		;
 	}
 
@@ -96,7 +89,6 @@ public class AuthorizationServerConfigurerAdapter extends org.springframework.se
 //	}
 
 
-
 	//JdbcTokenSotre
 //	@Bean
 //	public TokenStore jdbcTokenStore(DataSource dataSource) {
@@ -108,6 +100,7 @@ public class AuthorizationServerConfigurerAdapter extends org.springframework.se
 	public TokenStore tokenStore() {
 		return new JwtTokenStore(accessTokenConverter());
 	}
+
 	@Bean
 	public JwtAccessTokenConverter accessTokenConverter() {
 //		final JwtAccessTokenConverter converter = new JwtAccessTokenConverter();		converter.setSigningKey("123");
@@ -120,6 +113,7 @@ public class AuthorizationServerConfigurerAdapter extends org.springframework.se
 		converter.setKeyPair(keyPair);
 		return converter;
 	}
+
 	@Bean
 	public AuthenticationProvider authenticationProvider() {
 		return new AuthenticationProvider();

@@ -1,7 +1,7 @@
-package com.khh.api.resource.domain;
+package com.khh.api.resource.repository.primary;
 
+import com.khh.api.resource.domain.primary.Board;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 //@RepositoryRestResource
 public interface BoardRepository extends PagingAndSortingRepository<Board, Long> {}

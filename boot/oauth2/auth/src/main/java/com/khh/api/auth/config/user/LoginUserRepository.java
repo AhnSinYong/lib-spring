@@ -1,4 +1,4 @@
-package com.khh.api.config.user;
+package com.khh.api.auth.config.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

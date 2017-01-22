@@ -1,11 +1,10 @@
-package com.khh.api.config;
+package com.khh.api.auth.config;
 
-import com.khh.api.config.user.LoginUserDetails;
-import com.khh.api.config.user.LoginUserDetailsService;
+import com.khh.api.auth.config.user.LoginUserDetails;
+import com.khh.api.auth.config.user.LoginUserDetailsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.MessageSourceAccessor;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;

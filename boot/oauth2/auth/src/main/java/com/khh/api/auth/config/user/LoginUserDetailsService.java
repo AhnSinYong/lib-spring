@@ -1,4 +1,4 @@
-package com.khh.api.config.user;
+package com.khh.api.auth.config.user;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

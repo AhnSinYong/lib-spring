@@ -24,4 +24,15 @@ logging:
 
 
 
+######## CUSTOM PROPERTIES ##########
+#hibernate:
+#  mapping-locations: classpath:hibernate/*.hbm.xml
+##  packages-to-scan: com.khh.project
+##  annotated-packages: com.khh.project
+#  properties:
+##    hibernate.connection.url
+#    hibernate.dialect: org.hibernate.dialect.H2Dialect
+#    hibernate.show_sql: true
+#    hibernate.hbm2ddl.auto: update
+#    hibernate.current_session_context_class: thread
 
