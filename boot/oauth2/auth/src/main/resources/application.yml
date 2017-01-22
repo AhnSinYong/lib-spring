@@ -6,11 +6,18 @@ spring:
     console:
       enabled: true # Enable the console.
       path: /h2-console # Path at which the console will be available.
+  datasource:
+    initialize: true
+#    schema: schema.sql
+#    data: data.sql
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
 server:
   port: 8081
 logging:
   level:
-    root: DEBUG
+    root: INFO
     org.springframework.web: DEBUG
     org.hibernate: DEBUG
     com.khh: DEBUG

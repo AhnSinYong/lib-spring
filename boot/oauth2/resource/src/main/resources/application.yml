@@ -6,7 +6,10 @@ security:
       client-id: rpwd
       client-secret: pwd
     resource:
-      jwt.key-uri: http://localhost:8081/oauth/token_key
+    #Jwt토큰 자체적으로 체크할때 키를 서버에서 받아온다
+#      jwt.key-uri: http://localhost:8081/oauth/token_key
+#서버에서 체크할때
+      token-info-uri: http://localhost:8081/oauth/check_token
 logging:
   level:
     root: DEBUG
@@ -15,5 +18,11 @@ logging:
     com.khh: DEBUG
 
 
-
+datasource:
+    article:
+        url: jdbc:h2:mem:article
+        username: sa
+    user:
+        url: jdbc:h2:mem:user
+        username: sa
 
