@@ -30,6 +30,7 @@ public class DataBaseConfig {
 
 	private static final String DEFAULT_NAMING_STRATEGY = "org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy";
 
+	//http://millky.com/@origoni/post/1150?language=ko_kr
 	////////////////////////1번째 DataSource
 	@Bean
 	@Primary
