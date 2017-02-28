@@ -59,7 +59,8 @@ public class BoardController extends ControllerBase {
 	public Board list(){
 		Board board = new Board();
 		board.setId(pId++);
-		board.setTitle("a");
+//		board.setTitle("a");
+		board.setContent("김현아");
 		return board;
 	}
 	@GetMapping(path = "/admin")

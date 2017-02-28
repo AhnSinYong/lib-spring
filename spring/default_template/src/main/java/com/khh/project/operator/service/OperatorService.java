@@ -324,7 +324,7 @@ public class OperatorService extends DefaultService {
 		operatorRightJoin.setCreate_time(null);
 		operator.importSourceNotNullField(operatorRightJoin);
 		operator.setCard_no(operatorRightJoin.getCard_no());
-		//operator.setDits_ip(operatorRightJoin.getDits_ip());
+		//operator.set_ip(operatorRightJoin.get_ip());
 		hibernate.save(operator);//save     //hibernate.merge(operator);//save
 		
 		//delete!!! right

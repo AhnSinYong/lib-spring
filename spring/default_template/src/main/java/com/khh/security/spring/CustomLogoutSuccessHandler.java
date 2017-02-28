@@ -11,7 +11,7 @@ import org.springframework.security.core.Authentication;
 public class CustomLogoutSuccessHandler extends com.omnicns.web.spring.security.CustomLogoutSuccessHandler<Authentication> {
 	public void onLogoutSuccess(HttpServletRequest request,HttpServletResponse response, Authentication authentication)throws IOException, ServletException {
 		String refererUrl = request.getHeader("Referer");
-		// auditService.track("Logout from: " + refererUrl);
+		// auervice.track("Logout from: " + refererUrl);
 
 		super.onLogoutSuccess(request, response, authentication);
 	}

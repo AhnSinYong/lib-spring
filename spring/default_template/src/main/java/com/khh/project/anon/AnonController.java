@@ -160,8 +160,8 @@ public class AnonController extends DefaultController{
 	
 	///////////외부연동
 	
-	/* DITS
-		1.	DITS 연동 
+	/*
+		1.	 연동
 		-	예약 리스트 XML ( 첨부파일 alert.tpl 참고 )
 		-	특정 아이피(비로그인) or 로그인 인증이 된 사람만 접속 가능
 		$query = "select * from vw_msg_wait where status = ? order by wait_date, wait_time";
@@ -185,35 +185,35 @@ public class AnonController extends DefaultController{
 			</detail>
 		</list> 
 	 */
-	@RequestMapping(value="/dits/login")
-	public String ditslogin(HttpServletRequest request,HttpServletResponse response, ModelMap model) throws Exception {
-		String dits_ip_regex = configMng.getParam("dits_ip_regex");
+	@RequestMapping(value="//login")
+	public String login(HttpServletRequest request,HttpServletResponse response, ModelMap model) throws Exception {
+		String _ip_regex = configMng.getParam("_ip_regex");
 		String user_ip = RequestUtil.getRemoteAddr(request);
-		if(!StringUtil.isMatches(user_ip, dits_ip_regex)){
+		if(!StringUtil.isMatches(user_ip, _ip_regex)){
 			throw new Exception(Code.AUTH_FAIL.msg());
 		}
 		
 		String url = request.getParameter("url");
-		url = configMng.getParam("dits_login_success_"+url+"_url");
+		url = configMng.getParam("_login_success_"+url+"_url");
 		if(null==url){
-			url = configMng.getParam("dits_login_success_default_url");
+			url = configMng.getParam("_login_success_default_url");
 		}
 		//자동로그인
-		String login_id = configMng.getParam("dits_login_id");
-		String login_pwd = configMng.getParam("dits_login_pwd");
+		String login_id = configMng.getParam("_login_id");
+		String login_pwd = configMng.getParam("_login_pwd");
 		UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(login_id, login_pwd);
 		WebAuthenticationDetails details = new WebAuthenticationDetails(request); 
 		authentication.setDetails(details);
 		SecurityUtil.setAuthentication(customAuthenticationProvider.authenticate(authentication));
 		return "redirect:"+url;
 	}
-	@RequestMapping(value="/dits")
+	@RequestMapping(value="/")
 //	@PreAuthorize("hasIpAddress('192.168.11.200/204')")
-	public Writer<List<MsgWaitVVO>> dits(HttpServletRequest request,HttpServletResponse response, ModelMap model) throws Exception {
-		String dits_ip_regex = configMng.getParam("dits_ip_regex");
+	public Writer<List<MsgWaitVVO>> (HttpServletRequest request,HttpServletResponse response, ModelMap model) throws Exception {
+		String _ip_regex = configMng.getParam("_ip_regex");
 		String user_ip = RequestUtil.getRemoteAddr(request);
 		
-		if(!SecurityUtil.isLogin() && !StringUtil.isMatches(user_ip, dits_ip_regex)){
+		if(!SecurityUtil.isLogin() && !StringUtil.isMatches(user_ip, _ip_regex)){
 			HttpHeaders header = new HttpHeaders();
 			header.add(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8");
 			BodyErrorsException error = new BodyErrorsException((r,p)->{return Code.AUTH_FAIL.msg();});
@@ -246,9 +246,9 @@ public class AnonController extends DefaultController{
 	//dmb 예약리스트  xml
 	@RequestMapping(value="/dmb/wait")
 	public Writer<?> dmb_wait(@Valid @ModelAttribute("MsgDMBWaitSubmitVO") MsgDMBWaitSubmitVO msgDMBWaitSubmit, HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
-		String dits_ip_regex = configMng.getParam("dmb_ip_regex");
+		String _ip_regex = configMng.getParam("dmb_ip_regex");
 		String user_ip = RequestUtil.getRemoteAddr(request);
-		if(!SecurityUtil.isLogin() && !StringUtil.isMatches(user_ip, dits_ip_regex)){
+		if(!SecurityUtil.isLogin() && !StringUtil.isMatches(user_ip, _ip_regex)){
 			HttpHeaders header = new HttpHeaders();
 			header.add(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8");
 			BodyErrorsException error = new BodyErrorsException((r,p)->{return Code.AUTH_FAIL.msg();});
@@ -323,9 +323,9 @@ public class AnonController extends DefaultController{
 	//dmb 전송결과리스트  xml
 	@RequestMapping(value="/dmb/submit")
 	public Writer<?> dmb_sibmit(@Valid @ModelAttribute("MsgDMBWaitSubmitVO") MsgDMBWaitSubmitVO msgDMBWaitSubmit, HttpServletRequest request,HttpServletResponse response, ModelMap model) throws Exception {
-		String dits_ip_regex = configMng.getParam("dmb_ip_regex");
+		String _ip_regex = configMng.getParam("dmb_ip_regex");
 		String user_ip = RequestUtil.getRemoteAddr(request);
-		if(!SecurityUtil.isLogin() && !StringUtil.isMatches(user_ip, dits_ip_regex)){
+		if(!SecurityUtil.isLogin() && !StringUtil.isMatches(user_ip, _ip_regex)){
 			throw new Exception(Code.AUTH_FAIL.msg());
 		}
 		
@@ -396,9 +396,9 @@ public class AnonController extends DefaultController{
 	//dmb 승인반려 리스트  xml
 	@RequestMapping(value="/dmb/auth")
 	public Writer<?> dmb_auth(@Valid @ModelAttribute("MsgDMBAuthVO") MsgDMBAuthVO msgDMBAuth, HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
-		String dits_ip_regex = configMng.getParam("dmb_ip_regex");
+		String _ip_regex = configMng.getParam("dmb_ip_regex");
 		String user_ip = RequestUtil.getRemoteAddr(request);
-		if(!SecurityUtil.isLogin() && !StringUtil.isMatches(user_ip, dits_ip_regex)){
+		if(!SecurityUtil.isLogin() && !StringUtil.isMatches(user_ip, _ip_regex)){
 			throw new Exception(Code.AUTH_FAIL.msg());
 		}
 		
@@ -432,12 +432,12 @@ public class AnonController extends DefaultController{
 	@RequestMapping(value="/reg")
 	public Writer<List<MsgWaitVVO>> anonReg(@Valid @ModelAttribute("MsgWait") MsgRegWaitVO reg, HttpServletRequest request, HttpServletResponse response, ModelMap model) throws Exception {
 		log.info("/anon/reg  request parameter "+RequestUtil.getParametersSerialize(request));
-		String dits_ip_regex = configMng.getParam("reg_ip_regex");
+		String _ip_regex = configMng.getParam("reg_ip_regex");
 		String user_ip = RequestUtil.getRemoteAddr(request);
 		
 		log.info("/anon/reg  ("+user_ip+") request["+reg+"]");
 		
-		if(!SecurityUtil.isLogin() && !StringUtil.isMatches(user_ip, dits_ip_regex)){
+		if(!SecurityUtil.isLogin() && !StringUtil.isMatches(user_ip, _ip_regex)){
 			HttpHeaders header = new HttpHeaders();
 			header.add(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_HTML_VALUE+";charset=UTF-8");
 			BodyErrorsException error = new BodyErrorsException((r,p)->{return Code.AUTH_FAIL.msg();});

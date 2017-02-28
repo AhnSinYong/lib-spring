@@ -1,4 +1,4 @@
-rootProject.name = 'api-nhis'
+rootProject.name = 'multi-spring'
 
 String [] modules = ['api-core','api-cms']
 include modules

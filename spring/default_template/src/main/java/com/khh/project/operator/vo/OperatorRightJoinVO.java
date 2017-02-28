@@ -69,7 +69,7 @@ public @Data class OperatorRightJoinVO extends DefaultVO {
 	@Expose @Column(name="LAST_LOGIN_IP")	String last_login_ip;								//	VARCHAR2(50 BYTE)	Yes		21	마지막로그인IP
 	@Expose @Column(name="LAST_LOGIN_SESSION")	String last_login_session;							//	VARCHAR2(100 BYTE)	Yes		22	마지막로그인SESSION_ID
 	@Expose @Column(name="LAST_LOGIN_DATE")	String last_login_date;							//	VARCHAR2(14 BYTE)	Yes	 yyyymmddhh24miss
-//	@Expose @Column(name="DITS_IP")	String dits_ip;							//	dits client ip
+//	@Expose @Column(name="_IP")	String _ip;							//	 client ip
 	@Column(name="INDV_KEY")
 	String indv_key;
 	@Expose
