@@ -1,6 +1,9 @@
-*
-!.gitignore
-!src/
-!src/*
-!build.gradle
-!settings.gradle
+.DS_Store
+.idea
+build
+build/*
+out
+out/*
+sql
+sql/*
+

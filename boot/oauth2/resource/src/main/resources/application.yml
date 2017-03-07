@@ -38,8 +38,6 @@ datasource:
         username: sa
 
 
-
-
 hibernate:
   mapping-locations: classpath:hibernate/*.hbm.xml
 #  packages-to-scan: com.khh.project
