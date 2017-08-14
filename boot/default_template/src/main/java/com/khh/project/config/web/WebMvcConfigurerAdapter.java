@@ -217,7 +217,7 @@ public class WebMvcConfigurerAdapter extends org.springframework.web.servlet.con
 		registry.addResourceHandler("/img/**")		            .addResourceLocations("/img/");
 		registry.addResourceHandler("/image/**")	            .addResourceLocations("/image/");
 		registry.addResourceHandler("/assets/**")	            .addResourceLocations("/assets/");
-		registry.addResourceHandler("/")	                    .addResourceLocations("/");
+		registry.addResourceHandler("/*.map")	                    .addResourceLocations("/");
 		registry.addResourceHandler("/index.html")	            .addResourceLocations("/index.html");
 //		registry.addResourceHandler("/0.chunk.js")	            .addResourceLocations("/0.chunk.js");
 //		registry.addResourceHandler("/inline.bundle.js")	    .addResourceLocations("/inline.bundle.js");

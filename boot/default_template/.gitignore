@@ -8,7 +8,7 @@ sql
 sql/*
 webapp
 webapp/*
-
+src/main/angular/node_modules
 # Created by https://www.gitignore.io/api/web,java,macos,eclipse,intellij
 
 ### Eclipse ###

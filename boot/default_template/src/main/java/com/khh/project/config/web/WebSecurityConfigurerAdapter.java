@@ -94,7 +94,8 @@ public class WebSecurityConfigurerAdapter extends org.springframework.security.c
 				"/img/**"                   ,
 				"/image/**"                 ,
 				"/assets/**"                ,
-				"/*.js"               ,
+				"/*.js"                     ,
+				"/*.map"
 //				"/0.chunk.js"               ,
 //				"/index.html"               ,
 //				"/inline.bundle.js"         ,
@@ -102,7 +103,7 @@ public class WebSecurityConfigurerAdapter extends org.springframework.security.c
 //				"/polyfills.bundle.js"      ,
 //				"/styles.bundle.js"         ,
 //				"/vendor.bundle.js"         ,
-				"/"
+//				"/"
 		);
 //		web.ignoring().antMatchers("/resource/**", "/static/**", "/img/**", "/image/**", "/oauth/**");
 	}
