@@ -151,6 +151,8 @@ public class WebMvcConfigurerAdapter extends org.springframework.web.servlet.con
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController(WebSecurityConfigurerAdapter.LOGIN_PAGE).setViewName("security/login");
+        registry.addViewController("/").setViewName("forward:/index.html");
+//        registry.addViewController("/").setViewName("index.html");
 //        registry.addViewController(WebSecurityConfigurerAdapter.LOGOUT_URL).setViewName("security/logout");
     }
 
@@ -209,11 +211,21 @@ public class WebMvcConfigurerAdapter extends org.springframework.web.servlet.con
 	//리소스 패스 설정
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resource/**")	.addResourceLocations("/resource/");
-		registry.addResourceHandler("/static/**")	.addResourceLocations("/static/");
-		registry.addResourceHandler("/static/**")	.addResourceLocations("/static/");
-		registry.addResourceHandler("/img/**")		.addResourceLocations("/img/");
-		registry.addResourceHandler("/image/**")	.addResourceLocations("/image/");
+        registry.addResourceHandler("/resource/**")	            .addResourceLocations("/resource/");
+		registry.addResourceHandler("/static/**")	            .addResourceLocations("/static/");
+		registry.addResourceHandler("/static/**")	            .addResourceLocations("/static/");
+		registry.addResourceHandler("/img/**")		            .addResourceLocations("/img/");
+		registry.addResourceHandler("/image/**")	            .addResourceLocations("/image/");
+		registry.addResourceHandler("/assets/**")	            .addResourceLocations("/assets/");
+		registry.addResourceHandler("/")	                    .addResourceLocations("/");
+		registry.addResourceHandler("/index.html")	            .addResourceLocations("/index.html");
+//		registry.addResourceHandler("/0.chunk.js")	            .addResourceLocations("/0.chunk.js");
+//		registry.addResourceHandler("/inline.bundle.js")	    .addResourceLocations("/inline.bundle.js");
+//		registry.addResourceHandler("/main.bundle.js")	        .addResourceLocations("/main.bundle.js");
+//		registry.addResourceHandler("/polyfills.bundle.js")	    .addResourceLocations("/polyfills.bundle.js");
+//		registry.addResourceHandler("/styles.bundle.js")	    .addResourceLocations("/styles.bundle.js");
+//		registry.addResourceHandler("/vendor.bundle.js")	    .addResourceLocations("/vendor.bundle.js");
+		registry.addResourceHandler("/*.js")	                .addResourceLocations("/");
     }
 
 

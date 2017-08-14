@@ -88,7 +88,22 @@ public class WebSecurityConfigurerAdapter extends org.springframework.security.c
         if(h2ConsoleEnabled) {
             web.ignoring().antMatchers(h2ConsolePath+"/**");
         }
-		web.ignoring().antMatchers("/resource/**", "/static/**", "/img/**", "/image/**");
+		web.ignoring().antMatchers(
+				"/resource/**"              ,
+				"/static/**"                ,
+				"/img/**"                   ,
+				"/image/**"                 ,
+				"/assets/**"                ,
+				"/*.js"               ,
+//				"/0.chunk.js"               ,
+//				"/index.html"               ,
+//				"/inline.bundle.js"         ,
+//				"/main.bundle.js"           ,
+//				"/polyfills.bundle.js"      ,
+//				"/styles.bundle.js"         ,
+//				"/vendor.bundle.js"         ,
+				"/"
+		);
 //		web.ignoring().antMatchers("/resource/**", "/static/**", "/img/**", "/image/**", "/oauth/**");
 	}
 
